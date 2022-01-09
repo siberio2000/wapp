@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "montserrat", sans-serif;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  color: #fff;
+  padding: 0 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#wapp {
+  background-image: url("../assets/bg.png");
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s;
+  margin: 2rem;
+  border-radius: 1rem;
+}
+main {
+  padding: 5rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.45)
+  );
+  width: auto;
+  height: 50rem;
+  border-radius: 1rem;
+
+  .search-box {
+    width: 100%;
+    margin-bottom: 4rem;
+    .search-bar {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 0.3rem;
+      color: #313131;
+      font-size: 20px;
+      appearance: none;
+      border: none;
+      outline: none;
+      background: none;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    .search-bar:focus {
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+      background-color: rgba(255, 255, 255, 0.75);
+      border-radius: 0;
+    }
+  }
+
+  .weather-wrap {
+    padding: 0.5rem;
+    .location-box {
+      .location {
+        color: #fff;
+        font-size: 32px;
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+    .weather-box {
+      text-align: center;
+      .temp {
+        display: inline-block;
+        padding: 1rem;
+        color: #fff;
+        font-size: 102px;
+        font-weight: 900;
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 16px;
+        margin: 30px 0px;
+      }
+      .weather {
+        color: #fff;
+        font-size: 48px;
+        font-weight: 700;
+      }
+      .info {
+        padding-top: 7rem;
+        color: #fff;
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  body {
+    display: block;
+  }
+  #wapp {
+    margin: 0;
+    border-radius: 0;
+  }
+  main {
+    height: 100%;
+    min-height: 55rem;
+    padding: 2rem 0.5rem;
+    border-radius: 0;
+  }
+}
