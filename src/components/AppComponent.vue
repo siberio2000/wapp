@@ -1,34 +1,44 @@
 <template>
   <div id="wapp">
     <main>
-      <div class="title">
-        <h4>WEATHER APP</h4>
-      </div>
+      <header class="title">
+        <h2>WEATHER APP</h2>
+        <img src="@/assets/logo.png" />
+      </header>
 
-      <div class="search-box">
-        <!-- On @keypress we call fetchWeather function -->
-        <input
-          type="text"
-          class="search-bar"
-          placeholder="Search town/city"
-          v-model="query"
-          @keypress="fetchWeather"
-        />
-      </div>
+      <section>
+        <div class="search-box">
+          <!-- On @keypress we call fetchWeather function -->
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Search for town/city..."
+            v-model="query"
+            @keypress="fetchWeather"
+            @keyup="fetchWeather"
+            @click="clearInput"
+          />
+        </div>
 
-      <div class="weather-wrap" v-if="(typeof weather.main) != 'undefined'">
-        <div class="location-box">
-          <div class="location">
-            {{ weather.name.toUpperCase() }}, {{ weather.sys.country }}
+        <div class="weather-wrap" v-if="(typeof weather.main) != 'undefined'">
+          <div class="location-box">
+            <div class="location">
+              {{ weather.name }}, {{ weather.sys.country }}
+            </div>
+          </div>
+
+          <div class="weather-box">
+            <div class="temp">{{ Math.round(weather.main.temp) }}°c</div>
+            <div class="weather">{{ weather.weather[0].main }}</div>
+            <div class="info">Powered by openweathermap.org</div>
           </div>
         </div>
-
-        <div class="weather-box">
-          <div class="temp">{{ Math.round(weather.main.temp) }}°c</div>
-          <div class="weather">{{ weather.weather[0].main }}</div>
-          <div class="info">Source: openweathermap.org</div>
+        <div class="message" v-else>
+          No data to display. Please enter location
         </div>
-      </div>
+      </section>
+
+      <footer></footer>
     </main>
   </div>
 </template>
@@ -76,8 +86,8 @@ export default {
       this.weather = results;
       console.log(results);
     },
-    errorInfo(results) {
-      this.weather = results;
+    clearInput() {
+      document.getElementsByClassName("search-bar")[0].value = "";
     },
   },
 };
